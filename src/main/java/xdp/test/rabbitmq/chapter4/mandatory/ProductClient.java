@@ -31,12 +31,9 @@ public class ProductClient {
 			connection = factory.newConnection();
 			
 			channel = connection.createChannel();
-			channel.exchangeDeclare(EXCHANGE_NAME, "direct",true);// 持久化
-			channel.queueDeclare(QUEUE_NAME, true, false, false, null);
-			channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
 			
 			// mandotory = true 消息发送失败会返回给生产者
-			channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, true,
+			channel.basicPublish(EXCHANGE_NAME, "", true,
 					MessageProperties.PERSISTENT_TEXT_PLAIN,
 					"mandatory test".getBytes());
 			
@@ -49,8 +46,9 @@ public class ProductClient {
 				}
 			});
 		}finally {
-			channel.close();
-			connection.close();
+			// 先不能关闭连接，否则接受不到返回的消息
+//			channel.close();
+//			connection.close();
 		}
 		
 		

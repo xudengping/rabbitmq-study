@@ -1,4 +1,4 @@
-package xdp.test.rabbitmq.chapter4.mandatory;
+package xdp.test.rabbitmq.chapter4;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -10,7 +10,7 @@ import com.rabbitmq.client.MessageProperties;
 import com.rabbitmq.client.ReturnListener;
 import com.rabbitmq.client.AMQP.BasicProperties;
 
-public class ProductClient {
+public class Mondatory {
 	
 	private static final String EXCHANGE_NAME="exchange1";
 	private static final String QUEUE_NAME="queue1";

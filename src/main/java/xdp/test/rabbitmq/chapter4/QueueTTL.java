@@ -36,7 +36,7 @@ public class QueueTTL {
 			channel = connection.createChannel();
 			
 			Map<String,Object> map = new HashMap<String,Object>();
-			map.put("x-expires", 1000);//10s
+			map.put("x-expires", 1000);//1s
 			
 			channel.exchangeDeclare(EXCHANGE_NAME,"direct",false,false,map);
 			channel.queueDeclare(QUEUE_NAME,false,false,false,null);//durable=true
